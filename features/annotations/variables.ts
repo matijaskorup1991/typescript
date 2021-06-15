@@ -21,4 +21,11 @@ const logNumber: (i: number) => void = (i: number) => {
 };
 
 let json = '{"x": 20, "y": 30}';
-let parsed = JSON.parse(json);
+let parsed: { x: number; y: number } = JSON.parse(json);
+
+let someNumbers = [-10, -6, 10];
+let numberAboveZero: boolean | number = false;
+
+for (let number of someNumbers) {
+  if (number > 0) numberAboveZero = number;
+}
