@@ -1,4 +1,7 @@
-function add(num1: number, num2: number) {
+// type Combine = number | string;
+type Combine = number;
+
+function add(num1: Combine, num2: Combine) {
   return num1 + num2;
 }
 
@@ -7,7 +10,31 @@ let b = 10;
 
 console.log(add(5, 10));
 
+enum Role {
+  ADMIN,
+  READ_ONLY,
+  AUTHOR,
+}
+
+// let person: {
+//   name: string;
+//   age: number;
+//   hobbies: string[];
+//   role: [number, string];
+// } = {
+//   name: 'Matija',
+//   age: 30,
+//   hobbies: ['sport', 'cooking'],
+//   role: [2, 'author'],
+// };
+
 let person = {
   name: 'Matija',
   age: 30,
+  hobbies: ['sport', 'cooking'],
+  role: Role.ADMIN,
 };
+
+function printRes(num1: number, num2: number): void {
+  console.log(num1 + num2);
+}
