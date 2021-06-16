@@ -38,3 +38,12 @@ let person = {
 function printRes(num1: number, num2: number): void {
   console.log(num1 + num2);
 }
+
+// let combineValues: Function;
+let combineValues: (a: number, b: number) => number;
+
+// function addHandler(num1: number, num2: number, cb: Function) {}
+function addHandler(num1: number, num2: number, cb: (num: number) => void) {
+  let result = num1 + num2;
+  cb(result);
+}
