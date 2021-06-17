@@ -9,3 +9,8 @@ export const createTodo: RequestHandler = (req, res, next) => {
   TODOS.push(newTodo);
   res.status(201).json({ message: 'Created', todo: newTodo });
 };
+
+export const updateTodo: RequestHandler<{ id: string }> = (req, res, next) => {
+  const idToUpdate = req.params.id;
+  const updateText = (req.body as { text: string }).text;
+};
