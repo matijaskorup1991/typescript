@@ -18,12 +18,15 @@ const App: React.FC = () => {
       ...prevState,
       { id: Math.random().toString(), text },
     ]);
-    console.log(text);
+  };
+
+  const todoDeleteHandler = (todoId: string) => {
+    setTodos((prevState) => prevState.filter((el) => el.id !== todoId));
   };
 
   return (
     <div className='App'>
-      <Todo items={todos} />
+      <Todo items={todos} onDeleteTodo={todoDeleteHandler} />
       <NewTodo onAddTodo={todoAddHandler} />
     </div>
   );
