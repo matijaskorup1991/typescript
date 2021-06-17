@@ -3,6 +3,8 @@ const app = express();
 
 import todoRoutes from './routes/todos';
 
+app.use(express.json());
+
 app.use('/todos', todoRoutes);
 
 app.use(
