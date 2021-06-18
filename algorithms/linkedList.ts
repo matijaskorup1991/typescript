@@ -12,7 +12,7 @@ class LinkedList {
     this.tail = this.head;
     this.length = 1;
   }
-  push(value) {
+  push(value: number) {
     const newNode = new Node(value);
     if (this.head === null) {
       this.head = newNode;
@@ -24,10 +24,39 @@ class LinkedList {
     this.length += 1;
     return this;
   }
-  unshift(value) {}
+  pop() {
+    let temp = this.head;
+    let pre = this.head;
+    if (!this.head) return undefined;
+    while (this.next) {
+      pre = temp;
+      temp = temp.next;
+    }
+    this.tail = pre;
+    this.tail.next = null;
+    this.length--;
+    if (this.length === 0) {
+      this.head = null;
+      this.tail = null;
+    }
+    return temp;
+  }
+  unshift(value: number) {
+    let newNode = new Node(value);
+    if (this.head === null) {
+      this.head = newNode;
+      this.tail = this.head;
+    } else {
+      newNode.next = this.head;
+      this.head = newNode;
+    }
+    this.length++;
+    return this;
+  }
   insert(index, value) {}
 }
 
 let myLinkedList = new LinkedList(4);
 myLinkedList.push(7);
 console.log(myLinkedList);
+console.log(myLinkedList.pop());
