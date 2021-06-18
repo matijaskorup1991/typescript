@@ -26,7 +26,7 @@ function matchPoints(arr: string[]): number {
 
 // console.log(matchPoints(['3:1', '3:1', '2:1', '1:1']));
 
-function vowelThere(arr: number[]): number[] | string[] {
+function vowelThere(arr: number[]) {
   let vowels = 'aeiou';
 
   for (let i = 0; i < arr.length; i++) {
@@ -68,3 +68,45 @@ function indexOfChar(str: string, char: string): number {
 }
 
 // console.log(indexOfChar('matija', 'a'));
+
+class MyArray {
+  constructor() {
+    this.length = 0;
+    this.data = {};
+  }
+
+  get(index) {
+    return this.data[index];
+  }
+
+  push(item) {
+    this.data[this.length] = item;
+    this.length++;
+    return this.length;
+  }
+  pop() {
+    let lastItem = this.data[this.length - 1];
+    delete this.data[this.length - 1];
+    this.length--;
+    return lastItem;
+  }
+  delete(index) {
+    const item = this.data[index];
+    this.shiftItems(index);
+  }
+
+  shiftItems(index) {
+    for (let i = index; i < this.length; i++) {
+      this.data[i] = this.data[i + 1];
+    }
+    delete this.data[this.length - 1];
+    this.length--;
+  }
+}
+
+const newArray = new MyArray();
+
+console.log(newArray.push('matija'));
+console.log(newArray.push('!'));
+newArray.pop();
+console.log(newArray);

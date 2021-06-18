@@ -1,35 +1,27 @@
 "use strict";
-var __spreadArray = (this && this.__spreadArray) || function (to, from) {
-    for (var i = 0, il = from.length, j = to.length; i < il; i++, j++)
-        to[j] = from[i];
-    return to;
-};
 function convertNames(str) {
     return str
         .split(' ')
-        .map(function (el) { return el.split('').slice(0, 1) + '.'; })
+        .map((el) => el.split('').slice(0, 1) + '.')
         .join('')
         .toUpperCase();
 }
 // console.log(convertNames('matija Skorup'));
 function sumPos(arr) {
-    return arr.filter(function (el) { return el > 0; }).reduce(function (a, b) { return a + b; });
+    return arr.filter((el) => el > 0).reduce((a, b) => a + b);
 }
 // console.log(sumPos([1, 2, 3, -10, -12]));
 function matchPoints(arr) {
-    var num = 0;
-    var myArr = arr
-        .map(function (el) { return el.split(':'); })
-        .map(function (el) {
-        return el[0] > el[1] ? (num += 3) : el[0] == el[1] ? (num += 1) : (num += 0);
-    });
+    let num = 0;
+    let myArr = arr
+        .map((el) => el.split(':'))
+        .map((el) => el[0] > el[1] ? (num += 3) : el[0] == el[1] ? (num += 1) : (num += 0));
     return num;
 }
 // console.log(matchPoints(['3:1', '3:1', '2:1', '1:1']));
 function vowelThere(arr) {
-    var vowels = 'aeiou';
-    //   let maArr = [];
-    for (var i = 0; i < arr.length; i++) {
+    let vowels = 'aeiou';
+    for (let i = 0; i < arr.length; i++) {
         if (vowels.indexOf(String.fromCharCode(arr[i])) >= 0) {
             arr[i] = String.fromCharCode(arr[i]);
         }
@@ -38,11 +30,11 @@ function vowelThere(arr) {
 }
 // console.log(vowelThere([101, 121, 110]));
 function lengthOfLongestSubstring(s) {
-    var arr = s.split('');
-    var max = 0;
-    var temp = 0;
-    for (var i = 0; i < arr.length; i++) {
-        if (__spreadArray([], arr).slice(0, i).includes(arr[i])) {
+    let arr = s.split('');
+    let max = 0;
+    let temp = 0;
+    for (let i = 0; i < arr.length; i++) {
+        if ([...arr].slice(0, i).includes(arr[i])) {
             max = Math.max(max, temp);
             temp = 0;
         }
@@ -52,12 +44,48 @@ function lengthOfLongestSubstring(s) {
 }
 // console.log(lengthOfLongestSubstring('abcabcbb'));
 function indexOfChar(str, char) {
-    var count = 0;
-    var position = str.indexOf(char);
+    let count = 0;
+    let position = str.indexOf(char);
     while (position !== -1) {
         count++;
         position = str.indexOf(char, position + 1);
     }
     return count;
 }
-console.log(indexOfChar('matija', 'a'));
+// console.log(indexOfChar('matija', 'a'));
+class MyArray {
+    constructor() {
+        this.length = 0;
+        this.data = {};
+    }
+    get(index) {
+        return this.data[index];
+    }
+    push(item) {
+        this.data[this.length] = item;
+        this.length++;
+        return this.length;
+    }
+    pop() {
+        let lastItem = this.data[this.length - 1];
+        delete this.data[this.length - 1];
+        this.length--;
+        return lastItem;
+    }
+    delete(index) {
+        const item = this.data[index];
+        this.shiftItems(index);
+    }
+    shiftItems(index) {
+        for (let i = index; i < this.length; i++) {
+            this.data[i] = this.data[i + 1];
+        }
+        delete this.data[this.length - 1];
+        this.length--;
+    }
+}
+const newArray = new MyArray();
+console.log(newArray.push('matija'));
+console.log(newArray.push('!'));
+newArray.pop();
+console.log(newArray);
