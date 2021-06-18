@@ -84,8 +84,17 @@ class MyArray {
         this.length--;
     }
 }
-const newArray = new MyArray();
-console.log(newArray.push('matija'));
-console.log(newArray.push('!'));
-newArray.pop();
-console.log(newArray);
+// const newArray = new MyArray();
+// console.log(newArray.push('matija'));
+// console.log(newArray.push('!'));
+// newArray.pop();
+// console.log(newArray);
+function reverseStr(str) {
+    let reversed = [];
+    let length = str.length - 1;
+    for (let i = length; i >= 0; i--) {
+        reversed.push(str[i]);
+    }
+    return reversed.join('');
+}
+// console.log(reverseStr('John Doe'));
