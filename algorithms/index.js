@@ -1,4 +1,9 @@
 "use strict";
+var __spreadArray = (this && this.__spreadArray) || function (to, from) {
+    for (var i = 0, il = from.length, j = to.length; i < il; i++, j++)
+        to[j] = from[i];
+    return to;
+};
 function convertNames(str) {
     return str
         .split(' ')
@@ -32,3 +37,27 @@ function vowelThere(arr) {
     return arr;
 }
 // console.log(vowelThere([101, 121, 110]));
+function lengthOfLongestSubstring(s) {
+    var arr = s.split('');
+    var max = 0;
+    var temp = 0;
+    for (var i = 0; i < arr.length; i++) {
+        if (__spreadArray([], arr).slice(0, i).includes(arr[i])) {
+            max = Math.max(max, temp);
+            temp = 0;
+        }
+        temp++;
+    }
+    return Math.max(max, temp);
+}
+// console.log(lengthOfLongestSubstring('abcabcbb'));
+function indexOfChar(str, char) {
+    var count = 0;
+    var position = str.indexOf(char);
+    while (position !== -1) {
+        count++;
+        position = str.indexOf(char, position + 1);
+    }
+    return count;
+}
+console.log(indexOfChar('matija', 'a'));

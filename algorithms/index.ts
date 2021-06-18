@@ -38,3 +38,33 @@ function vowelThere(arr: number[]): number[] | string[] {
 }
 
 // console.log(vowelThere([101, 121, 110]));
+
+function lengthOfLongestSubstring(s: string): number {
+  let arr = s.split('');
+  let max = 0;
+  let temp = 0;
+
+  for (let i = 0; i < arr.length; i++) {
+    if ([...arr].slice(0, i).includes(arr[i])) {
+      max = Math.max(max, temp);
+      temp = 0;
+    }
+    temp++;
+  }
+  return Math.max(max, temp);
+}
+
+// console.log(lengthOfLongestSubstring('abcabcbb'));
+
+function indexOfChar(str: string, char: string): number {
+  let count = 0;
+  let position = str.indexOf(char);
+  while (position !== -1) {
+    count++;
+    position = str.indexOf(char, position + 1);
+  }
+
+  return count;
+}
+
+// console.log(indexOfChar('matija', 'a'));
