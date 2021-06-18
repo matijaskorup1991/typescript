@@ -28,7 +28,7 @@ function matchPoints(arr: string[]): number {
 
 function vowelThere(arr: number[]): number[] | string[] {
   let vowels = 'aeiou';
-  //   let maArr = [];
+
   for (let i = 0; i < arr.length; i++) {
     if (vowels.indexOf(String.fromCharCode(arr[i])) >= 0) {
       arr[i] = String.fromCharCode(arr[i]);
