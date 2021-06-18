@@ -64,12 +64,39 @@ function where(collection: object[], source: object): object {
   return arr;
 }
 
-console.log(
-  where(
-    [
-      { first: 'John', last: 'Doe' },
-      { first: 'Jane', last: 'Smith' },
-    ],
-    { first: 'Jane' }
-  )
-);
+// console.log(
+//   where(
+//     [
+//       { first: 'John', last: 'Doe' },
+//       { first: 'Jane', last: 'Smith' },
+//     ],
+//     { first: 'Jane' }
+//   )
+// );
+
+function myReplace(str: string, before: string, after: string): string {
+  let regex = /[A-Z]/g;
+  let word = after;
+  if (regex.test(before.charAt(0))) {
+    word = word.charAt(0).toUpperCase() + word.slice(1);
+  }
+
+  return str.replace(before, word);
+}
+
+// console.log(
+//   myReplace(
+//     'lorem ipsum dolor sit Amet, consectetur adipiscing',
+//     'Amet',
+//     'test'
+//   )
+// );
+
+function translate(str: string): string {
+  let regex = /[aeiou]/;
+  if (regex.test(str.charAt(0))) return str + 'way';
+
+  return str.slice(1) + 'ay';
+}
+
+// console.log(translate('apple'));
