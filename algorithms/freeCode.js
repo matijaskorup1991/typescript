@@ -88,3 +88,15 @@ function translate(str) {
     return str.slice(1) + 'ay';
 }
 // console.log(translate('apple'));
+function missingLetter(str) {
+    let myArray = [...str].map((el) => el.charCodeAt(0));
+    let res = [];
+    for (let i = myArray[0]; i <= myArray[myArray.length - 1]; i++) {
+        res.push(i);
+    }
+    return (res
+        .filter((el) => !myArray.includes(el))
+        .map((el) => String.fromCharCode(el))
+        .join('') || undefined);
+}
+console.log(missingLetter('abc'));
